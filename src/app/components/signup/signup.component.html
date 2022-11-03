@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-md-4 mx-auto">
+    <div class="card">
+      <div class="card-header">Regístrese</div>
+      <div class="card-body">
+        <form (submit)="signUp()">
+          <div class="form-group">
+            <input
+              type="text"
+              [(ngModel)]="signUpService.contact.names"
+              class="form-control"
+              placeholder="Nombres..."
+              name="names"
+              required
+              id="names"
+            />
+            <div class="form-group">
+              <input
+                type="text"
+                [(ngModel)]="signUpService.contact.lastNames"
+                class="form-control"
+                required
+                placeholder="Apellidos..."
+                name="lastNames"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                [(ngModel)]="signUpService.contact.phoneNumber"
+                required
+                placeholder="Celular..."
+                class="form-control"
+                name="phoneNumber"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                [(ngModel)]="signUpService.contact.email"
+                required
+                placeholder="Email..."
+                class="form-control"
+                name="email"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="password"
+                [(ngModel)]="signUpService.contact.password"
+                required
+                placeholder="Contraseña..."
+                class="form-control"
+                name="password"
+              />
+            </div>
+            <div class="d-grid mt-4">
+              <button type="submit" class="btn btn-primary">Registrar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

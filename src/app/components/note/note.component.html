@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <form #noteForm="ngForm" (ngSubmit)="addNote(noteForm)">
+          <input
+            type="hidden"
+            name="_id"
+            [(ngModel)]="noteService.selectedNote._id"
+          />
+          <div class="form-group mb-3">
+            <input
+              type="text"
+              required="required"
+              class="form-control"
+              name="title"
+              required
+              placeholder="Ingrese el Titulo ..."
+              [(ngModel)]="noteService.selectedNote.title"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              required="required"
+              class="form-control"
+              name="body"
+              required
+              placeholder="Ingrese el Contenido ..."
+              [(ngModel)]="noteService.selectedNote.body"
+            />
+          </div>
+          <button
+            class="btn btn-secondary mr-2 mt-2"
+            (click)="resetForm(noteForm)"
+          >
+            Limpiar
+          </button>
+          <button class="btn btn-primary mt-2">Guardar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Titulo</th>
+          <th>Contenido</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let note of noteService.notes">
+          <td>{{ note.title }}</td>
+          <td>{{ note.body }}</td>
+          <td>
+            <button class="btn btn-secondary btn-sm" (click)="editNote(note)">
+              <i class="material-icons">edit</i>
+            </button>
+            <button
+              class="btn btn-danger btn-sm"
+              (click)="deleteNote(note._id!)"
+            >
+              <i class="material-icons">delete</i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
