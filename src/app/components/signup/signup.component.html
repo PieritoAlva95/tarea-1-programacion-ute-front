@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-header">Regístrese</div>
       <div class="card-body">
-        <form (submit)="signUp()">
+        <form #singnUpForm="ngForm" (ngSubmit)="signUp(singnUpForm)">
           <div class="form-group">
             <input
               type="text"

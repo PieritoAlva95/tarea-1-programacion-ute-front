@@ -1,23 +1,25 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Note } from '../models/note';
+import { SigninService } from './signin.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NoteService {
   URL_API = 'http://localhost:3000/api/v1/notes';
+  API = 'http://localhost:3000/api/v1/contact-notes';
   selectedNote: Note = { title: '', body: '' };
   notes!: Note[];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private signInservice: SigninService) {}
 
   createNote(note: Note) {
     return this.http.post(this.URL_API, note);
   }
 
   getNotes() {
-    return this.http.get<Note[]>(this.URL_API);
+    return this.http.get<Note[]>(this.API);
   }
 
   updateNote(note: Note) {

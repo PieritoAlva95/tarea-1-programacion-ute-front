@@ -2,7 +2,7 @@
   <div class="col-md-4">
     <div class="card">
       <div class="card-body">
-        <form #noteForm="ngForm" (ngSubmit)="addNote(noteForm)">
+        <form #noteForm="ngForm" (submit)="addNote(noteForm)">
           <input
             type="hidden"
             name="_id"
@@ -11,10 +11,8 @@
           <div class="form-group mb-3">
             <input
               type="text"
-              required="required"
               class="form-control"
               name="title"
-              required
               placeholder="Ingrese el Titulo ..."
               [(ngModel)]="noteService.selectedNote.title"
             />
@@ -22,10 +20,8 @@
           <div class="form-group">
             <input
               type="text"
-              required="required"
               class="form-control"
               name="body"
-              required
               placeholder="Ingrese el Contenido ..."
               [(ngModel)]="noteService.selectedNote.body"
             />

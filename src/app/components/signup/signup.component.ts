@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { SignupService } from 'src/app/services/signup.service';
 
 @Component({
@@ -7,23 +9,17 @@ import { SignupService } from 'src/app/services/signup.service';
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
-  constructor(public signUpService: SignupService) {}
+  constructor(public signUpService: SignupService, private router: Router) {}
 
   ngOnInit(): void {}
 
-  signUp() {
+  signUp(form: NgForm) {
     this.signUpService
       .signUp(this.signUpService.contact)
       .subscribe((res: any) => {
-        console.log(res);
-        localStorage.setItem('_id_Contact', res.contact_created._id);
-        this.getLogin();
-      });
-  }
-
-  getLogin() {
-    this.signUpService.getLogin().subscribe((res: any) => {
-      console.log(res);
+        sessionStorage.setItem('token', res.token);
+        form.reset();
+        this.router.navigate(['/notes']);
       });
   }
 }

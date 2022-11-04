@@ -21,17 +21,21 @@ export class NoteComponent implements OnInit {
 
   addNote(form: NgForm) {
     if (form.value._id) {
-      this.noteService.updateNote(form.value);
+      this.noteService.updateNote(form.value).subscribe((_res: any) => {
+        this.getNotes();
+        form.reset();
+      });
     } else {
-      this.noteService.createNote(form.value);
+      this.noteService.createNote(form.value).subscribe((_res: any) => {
+        this.getNotes();
+        form.reset();
+      });
     }
-    this.getNotes();
-    form.reset();
   }
 
   getNotes() {
     this.noteService.getNotes().subscribe((res: any) => {
-      this.noteService.notes = res.noteListFinded;
+      this.noteService.notes = res.notesListFinded;
     });
   }
 
@@ -42,7 +46,7 @@ export class NoteComponent implements OnInit {
   deleteNote(id: string) {
     const isTrue = confirm('Estas seguro de eliminar la nota?');
     if (isTrue) {
-      this.noteService.deleteNote(id).subscribe(() => {
+      this.noteService.deleteNote(id).subscribe((_res: any) => {
         this.getNotes();
       });
     }

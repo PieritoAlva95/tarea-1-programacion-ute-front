@@ -20,8 +20,4 @@ export class SignupService {
   signUp(contact: Contact) {
     return this.http.post(this.SIGN_UP_URL, contact);
   }
-
-  getLogin() {
-    return this.http.get(`http://localhost:3000/api/v1/login`);
-  }
 }
