@@ -13,7 +13,7 @@ export class SignupService {
     password: '',
   };
 
-  private SIGN_UP_URL = 'http://localhost:3000/api/v1/users/signup';
+  private SIGN_UP_URL = 'http://172.105.151.84/api/v1/users/signup';
 
   constructor(private http: HttpClient) {}
 

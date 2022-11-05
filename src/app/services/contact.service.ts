@@ -6,7 +6,7 @@ import { Contact } from '../models/contact';
   providedIn: 'root',
 })
 export class ContactService {
-  URL_API = 'http://localhost:3000/api/v1';
+  URL_API = 'http://172.105.151.84/api/v1';
   selectedContact: Contact = {
     names: '',
     lastNames: '',

@@ -6,8 +6,8 @@ import { Note } from '../models/note';
   providedIn: 'root',
 })
 export class NoteService {
-  URL_API = 'http://localhost:3000/api/v1/notes';
-  API = 'http://localhost:3000/api/v1/user-notes';
+  URL_API = 'http://172.105.151.84/api/v1/notes';
+  API = 'http://172.105.151.84/api/v1/user-notes';
   selectedNote: Note = { title: '', body: '' };
   notes!: Note[];
 
