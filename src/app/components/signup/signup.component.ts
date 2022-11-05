@@ -14,12 +14,10 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {}
 
   signUp(form: NgForm) {
-    this.signUpService
-      .signUp(this.signUpService.contact)
-      .subscribe((res: any) => {
-        sessionStorage.setItem('token', res.token);
-        form.reset();
-        this.router.navigate(['/notes']);
-      });
+    this.signUpService.signUp(this.signUpService.user).subscribe((res: any) => {
+      sessionStorage.setItem('token', res.token);
+      form.reset();
+      this.router.navigate(['/notes']);
+    });
   }
 }

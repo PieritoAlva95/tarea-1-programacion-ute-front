@@ -15,7 +15,7 @@ export class SigninComponent implements OnInit {
 
   signIn(form: NgForm) {
     this.signInService
-      .signIn(this.signInService.contact)
+      .signIn(this.signInService.userLogin)
       .subscribe((res: any) => {
         sessionStorage.setItem('token', res.token);
         form.reset();

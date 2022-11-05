@@ -4,7 +4,7 @@ export interface Contact {
   lastNames: string;
   phoneNumber?: string;
   email: string;
-  password: string;
+  password?: string;
   createdAt?: string;
   updatedAt?: string;
 }

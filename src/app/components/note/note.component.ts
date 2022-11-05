@@ -35,7 +35,7 @@ export class NoteComponent implements OnInit {
 
   getNotes() {
     this.noteService.getNotes().subscribe((res: any) => {
-      this.noteService.notes = res.notesListFinded;
+      this.noteService.notes = res.notes_list_finded;
     });
   }
 

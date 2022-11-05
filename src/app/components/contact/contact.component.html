@@ -1,1 +1,94 @@
-<p>contact works!</p>
+<div class="row">
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <form #contactForm="ngForm" (submit)="createContact(contactForm)">
+          <input
+            type="hidden"
+            name="_id"
+            [(ngModel)]="contactService.selectedContact._id"
+          />
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              name="names"
+              placeholder="Ingrese sus nombres..."
+              [(ngModel)]="contactService.selectedContact.names"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              name="lastNames"
+              placeholder="Ingrese sus apellidos..."
+              [(ngModel)]="contactService.selectedContact.lastNames"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              name="phoneNumber"
+              placeholder="Ingrese su numero de celular..."
+              [(ngModel)]="contactService.selectedContact.phoneNumber"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              name="email"
+              placeholder="Ingrese su email..."
+              [(ngModel)]="contactService.selectedContact.email"
+            />
+          </div>
+          <button
+            class="btn btn-secondary mr-2 mt-2"
+            type="button"
+            (click)="resetForm(contactForm)"
+          >
+            Limpiar
+          </button>
+          <button class="btn btn-primary mt-2" type="submit">Guardar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th># Celular</th>
+          <th>Email</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contact of contactService.contacts">
+          <td>{{ contact.names }}</td>
+          <td>{{ contact.lastNames }}</td>
+          <td>{{ contact.phoneNumber }}</td>
+          <td>{{ contact.email }}</td>
+          <td>
+            <button
+              class="btn btn-secondary btn-sm"
+              (click)="editContact(contact)"
+            >
+              <i class="material-icons">edit</i>
+            </button>
+            <button
+              class="btn btn-danger btn-sm"
+              (click)="deleteContact(contact._id!)"
+            >
+              <i class="material-icons">delete</i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
